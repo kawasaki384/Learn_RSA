@@ -21,7 +21,7 @@ void init(){
 	srand(time(NULL));
 }
 
-_Bool is_it_primenum(int num){
+_Bool is_it_a_primenum(int num){
 	int c = 0;
 	for(int i = 1;i <= (int)sqrt((double)num);i++){
 		if(num % i == 0)
@@ -35,7 +35,7 @@ _Bool is_it_primenum(int num){
 }
 
 //2数は互いに素であるか？
-_Bool are_they_relatively_prime(int a,int b){
+_Bool are_they_relatively_prime_nums(int a,int b){
 	int c = 0;
 	int d = 0;
 	while(b != 0){
@@ -54,14 +54,14 @@ _Bool are_they_relatively_prime(int a,int b){
 //ランダムな素数を生成してp,qに代入する。
 void get_random_primenum(){
 	int p_tmp = 0;
-	while(is_it_primenum(p_tmp) == 0){
+	while(is_it_a_primenum(p_tmp) == 0){
 		//1024～2048の中からの素数を生成
 		p_tmp = 1024 + rand() % 1025;
 	}
 
 	int q_tmp = 0;
 
-	while(is_it_primenum(q_tmp) == 0 || p_tmp == q_tmp){
+	while(is_it_a_primenum(q_tmp) == 0 || p_tmp == q_tmp){
 		//1024～2048の中から素数を生成
 		q_tmp = 1024 + rand() % 1025;
 	}
@@ -79,8 +79,8 @@ void get_random_primenum(){
 void get_e(){
 	int e_tmp = 0;
 	
-	while(is_it_primenum(e_tmp) == 0 || 1 > e_tmp || e_tmp > phi_n 
-			|| are_they_relatively_prime(e_tmp,phi_n) == 0){
+	while(is_it_a_primenum(e_tmp) == 0 || 1 > e_tmp || e_tmp > phi_n 
+			|| are_they_relatively_prime_nums(e_tmp,phi_n) == 0){
 		//256～512の中から素数を生成
 		e_tmp = 256 + rand() % 257;
 	}
